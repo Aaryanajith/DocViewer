@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -8,6 +8,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  FilePickerResult? result;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +50,18 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(color: Colors.black),
                   ),
                   onPressed: () async {
-                    // uploadFile();
+                    result = await FilePicker.platform.pickFiles(
+                      allowMultiple: true,
+                    );
+                    if (result == null) {
+                          print("No file selected");
+                        } else {
+                        setState(() {
+                        });
+                         result?.files.forEach((element) {
+                           print(element.name);
+                         });
+                        }
                   },
                 ),
               ),
@@ -57,23 +71,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  // Future uploadFile() async {
-  //   var dio = Dio();
-
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-  //   if (result != null) {
-  //     // File file = File(result.files.single.path?? " ");
-
-  //     String fileName = file.path.split('/').last;
-
-  //     String path = file.path;
-
-  //     FormData data = FormData.fromMap({
-  //       "file": await MultipartFile.fromFile(path, filename: fileName),
-  //     });
-
-  //   }
-  // }
 }
+
+
+
+
