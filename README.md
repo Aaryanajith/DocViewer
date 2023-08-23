@@ -4,7 +4,7 @@ The DocViewer app is a versatile document viewer built using Flutter, allowing u
 
 # Installation
 
-Clone the repository: git clone https://github.com/your-username/docviewer-app.git
+Clone the repository: git clone https://github.com/Aaryanajith/DocViewer.git
 
 Navigate to the project directory: cd docviewer-app
 
